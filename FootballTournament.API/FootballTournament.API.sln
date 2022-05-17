@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.API", "FootballTournament.API\FootballTournament.API.csproj", "{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.Data", "FootballTournament.Data\FootballTournament.Data.csproj", "{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
