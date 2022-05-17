@@ -4,6 +4,10 @@ import './index.scss'
 const Navbar = () => {
   return (
     <nav className='navbar'>
+      <Link to='/' className='title'>
+        <span className='foot'>Foot</span>
+        <span className='ball'>ball</span>
+      </Link>
       <ul className='nav-items'>
         <li className='nav-item'>
           <Link to='/'>Home</Link>
