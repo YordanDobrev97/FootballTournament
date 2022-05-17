@@ -1,0 +1,23 @@
+
+.navbar {
+  background-color: #292C31;
+  padding: 10px;
+
+  .nav-items {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .nav-item {
+      list-style-type: none;
+      margin: 0 5px;
+      padding: 15px;
+
+      a {
+        color: #ffff;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    }
+  }
+}
