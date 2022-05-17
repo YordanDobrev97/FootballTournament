@@ -29,6 +29,11 @@
       font-family: Tahoma, "Trebuchet MS", sans-serif;
     }
   }
+}
 
-
+@media only screen and (max-width: 790px) {
+  .center-box {
+    width: 100% !important;
+    background: none !important;
+  }
 }

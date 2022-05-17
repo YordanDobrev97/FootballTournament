@@ -36,3 +36,22 @@ a {
   font-size: 20px;
   text-decoration: none;
 }
+
+@media only screen and (max-width: 480px) {
+  .navbar {
+    padding: 30px !important;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 16px;
+    margin: auto;
+  }
+
+  .nav-items {
+    margin: 0;
+    padding: 0;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+}
