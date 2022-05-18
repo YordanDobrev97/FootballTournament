@@ -1,6 +1,6 @@
 ﻿namespace FootballTournament.ViewModels.Users
 {
-    public class InputUserVIewModel
+    public class InputUserViewModel
     {
         public string Username { get; set; }
 
