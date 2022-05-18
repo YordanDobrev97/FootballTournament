@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.API", "FootballTournament.API\FootballTournament.API.csproj", "{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballTournament.API", "FootballTournament.API\FootballTournament.API.csproj", "{B4141A43-F6C2-49EA-BBED-EF724E2AF37D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.Data", "FootballTournament.Data\FootballTournament.Data.csproj", "{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballTournament.Data", "FootballTournament.Data\FootballTournament.Data.csproj", "{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.ViewModels", "FootballTournament.ViewModels\FootballTournament.ViewModels.csproj", "{934E6F6B-DC36-4EC1-A0BE-C09A289203F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballTournament.Services", "FootballTournament.Services\FootballTournament.Services.csproj", "{3CF8B8AF-FF9C-4EB6-A58F-DE5451070F2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7F8EFF-6CFC-4C05-8ADC-47B954E44015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934E6F6B-DC36-4EC1-A0BE-C09A289203F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934E6F6B-DC36-4EC1-A0BE-C09A289203F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934E6F6B-DC36-4EC1-A0BE-C09A289203F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934E6F6B-DC36-4EC1-A0BE-C09A289203F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF8B8AF-FF9C-4EB6-A58F-DE5451070F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF8B8AF-FF9C-4EB6-A58F-DE5451070F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF8B8AF-FF9C-4EB6-A58F-DE5451070F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF8B8AF-FF9C-4EB6-A58F-DE5451070F2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

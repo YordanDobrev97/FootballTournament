@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FootballTournament.Data\FootballTournament.Data.csproj" />
+    <ProjectReference Include="..\FootballTournament.Services\FootballTournament.Services.csproj" />
+    <ProjectReference Include="..\FootballTournament.ViewModels\FootballTournament.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
