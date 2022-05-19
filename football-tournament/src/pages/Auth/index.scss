@@ -64,7 +64,7 @@ body::before {
   input[id="txt-input"] {
     width: 250px;
   }
-  
+
   input:focus {
     transform: translateX(-2px);
     border-radius: 5px;
@@ -87,6 +87,16 @@ body::before {
     letter-spacing: 0.05em;
     font-size: 20px;
   }
+}
+
+.error {
+  background: red;
+  color: white;
+  padding: 9px;
+  width: 30%;
+  margin: auto;
+  border-radius: 8px;
+  font-size: 20px;
 }
 
 @keyframes ani9 {

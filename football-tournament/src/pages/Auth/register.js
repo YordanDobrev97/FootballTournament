@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+
 import Form from '../../components/Auth/Form'
 import Input from '../../components/Auth/Input'
-
-import { auth } from '../../components/services/auth'
+import { authenticate } from '../../services/auth'
 import { DEFAULT_HEADERS } from '../../components/utils/headers'
 
 import './index.scss'
@@ -10,10 +12,20 @@ import './index.scss'
 const Register = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [_, setCookie] = useCookies(['jwt'])
+
+  const navigation = useNavigate()
 
   const onSubmit = async () => {
-    const token = await auth('register', 'POST', DEFAULT_HEADERS, {username, password})
-    console.log(token)
+    try {
+      const res = await authenticate('register', 'POST', DEFAULT_HEADERS, { username, password })
+      const token = await res.json()
+      setCookie('jwt', token)
+      navigation('/')
+    } catch (e) {
+      setErrorMessage('Register failed')
+    }
   }
 
   return (
@@ -38,6 +50,10 @@ const Register = () => {
             />
             <button onClick={onSubmit} className='auth-btn'>Register</button>
           </Form>
+
+          {errorMessage && (
+            <div className='error'>{errorMessage}</div>
+        )}
         </div>
     </div>
   )

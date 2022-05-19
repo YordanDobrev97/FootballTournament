@@ -55,7 +55,7 @@
             var result = await this.signInManager.PasswordSignInAsync(loginInput.Username, loginInput.Password, true, false);
             if (!result.Succeeded)
             {
-                return this.NotFound();
+                return this.BadRequest("Login failded");
             }
 
             var user = this.userManager.Users.First(x => x.UserName == loginInput.Username);
