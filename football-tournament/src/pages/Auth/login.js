@@ -25,7 +25,7 @@ const Login = () => {
       const token = await res.json()
       setCookie('jwt', token)
       context.setAuthenticated(true)
-      navigation('/')
+      navigation('/home')
     } catch (error) {
       setErrorMessage('Login failed')
     }

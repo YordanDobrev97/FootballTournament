@@ -1,11 +1,11 @@
-
+import { Link, Outlet } from 'react-router-dom'
 import './index.scss'
 
 const Tournament = () => {
   return (
     <div>
-      <div>
-        <button className='create-tournament-btn'>Create Tournament</button>
+      <div className='create-tournament-btn'>
+        <Link to='/tournaments/create'>Create Tournament</Link>
       </div>
 
       <div>
