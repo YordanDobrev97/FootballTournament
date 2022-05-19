@@ -2,6 +2,9 @@ import { useState } from 'react'
 import Form from '../../components/Auth/Form'
 import Input from '../../components/Auth/Input'
 
+import { auth } from '../../components/services/auth'
+import { DEFAULT_HEADERS } from '../../components/utils/headers'
+
 import './index.scss'
 
 const Register = () => {
@@ -9,18 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState('')
 
   const onSubmit = async () => {
-    const token = await fetch('https://localhost:44379/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': true
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    }).then(r => r.json())
-
+    const token = await auth('register', 'POST', DEFAULT_HEADERS, {username, password})
     console.log(token)
   }
 
