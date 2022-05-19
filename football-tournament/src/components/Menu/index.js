@@ -1,10 +1,20 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 import AuthContext from '../../context/AuthContext'
 
 const Menu = () => {
   const context = useContext(AuthContext)
+  const [removeCookie] = useCookies(['jwt'])
+  const navigation = useNavigate()
+
+  const logOut = () => {
+    context.setAuthenticated(false)
+    removeCookie('jwt')
+    navigation('/')
+  }
+
   return (
     <ul className={`nav-items`}>
       <li className='nav-item'>
@@ -21,7 +31,7 @@ const Menu = () => {
             <Link to='/'>Statistics</Link>
           </li>
           <li className='nav-item'>
-            <Link to='/'>LogOut</Link>
+            <button className='logout-btn' onClick={logOut}>LogOut</button>
           </li>
         </>
       ) : (

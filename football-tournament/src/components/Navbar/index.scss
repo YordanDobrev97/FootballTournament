@@ -1,4 +1,3 @@
-
 .navbar {
   background-color: #292C31;
   padding: 10px;
@@ -15,13 +14,6 @@
       height: 45px;
       margin-top: 8px;
     }
-    .foot {
-      color: #ffff;
-    }
-
-    .ball {
-      color: orange;
-    }
   }
 
   .nav-items {
@@ -33,6 +25,15 @@
       list-style-type: none;
       margin: 0 5px;
       padding: 15px;
+
+      .logout-btn {
+        background: no-repeat;
+        color: white;
+        border: none;
+        font-size: 18px;
+        margin-top: 4px;
+        cursor: pointer;
+      }
     }
   }
 }
