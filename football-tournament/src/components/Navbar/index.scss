@@ -4,11 +4,17 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 
   .title {
     font-size: 26px;
+    margin: 0px 30px;
 
+    img {
+      width: 50px;
+      height: 45px;
+      margin-top: 8px;
+    }
     .foot {
       color: #ffff;
     }
