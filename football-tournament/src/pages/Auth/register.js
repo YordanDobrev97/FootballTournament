@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import AuthForm from '../../components/Auth/AuthForm'
+import Form from '../../components/Auth/Form'
+import Input from '../../components/Auth/Input'
 
 import './index.scss'
 
@@ -7,30 +8,45 @@ const Register = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const usernameHandler = (value) => {
-    setUsername(value)
-  }
+  const onSubmit = async () => {
+    const token = await fetch('https://localhost:44379/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': true
+      },
+      body: JSON.stringify({
+        username,
+        password
+      })
+    }).then(r => r.json())
 
-  const passwordHandler = (value) => {
-    setPassword(value)
-  }
-
-  const onRegister = (e) => {
-    e.preventDefault()
+    console.log(token)
   }
 
   return (
     <div>
-      <form>
         <div className="container">
           <header className="head-form">
             <h2>Register</h2>
           </header>
-          <AuthForm usernameHandler={usernameHandler} passwordHandler={passwordHandler}>
-            <button onClick={onRegister} className="auth-btn">Register</button>
-          </AuthForm>
+          <Form>
+            <Input
+              label='Username'
+              id='username'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              label='Password'
+              id='password'
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={onSubmit} className='auth-btn'>Register</button>
+          </Form>
         </div>
-      </form>
     </div>
   )
 }
