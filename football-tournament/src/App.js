@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/index'
 import Home from './pages/Home/index'
 import Login from './pages/Auth/login'
 import Register from './pages/Auth/register'
+import Tournament from './pages/Tournament'
 import AuthContext from './context/AuthContext'
 
 import './App.css'
@@ -28,6 +29,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/tournaments' element={<Tournament />} />
           </Routes>
         </Router>
       </AuthContext.Provider>

@@ -24,7 +24,7 @@ const Menu = () => {
       {context.isAuthenticated ? (
         <>
           <li className='nav-item'>
-            <Link to='/'>Tournaments</Link>
+            <Link to='/tournaments'>Tournaments</Link>
           </li>
 
           <li className='nav-item'>
