@@ -1,3 +1,37 @@
+.create-tournament-form {
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  max-width: 80%;
+  width: 40%;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 15px;
+
+  .row {
+    max-width: 100%;
+    .col {
+      margin: 4px auto;
+      width: 80%;
+      background: #cac5c5;
+      padding: 18px;
+      border-radius: 22px;
+      border: none;
+      font-size: 21px;
+    }
+  }
+
+  .create-btn {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #ffff;
+    border: none;
+    border-radius: 14px;
+    width: 50%;
+    margin: 12px;
+  }
+}
+
 .create-tournament-btn {
   background: #007BFF;
   width: 40%;
@@ -10,13 +44,24 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 780px) {
+  .create-tournament-form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .col {
+    padding: 5px;
+  }
+}
+
 $table-breakpoint: 480px;
 $table-background-color: #FFF;
 $table-text-color: #024457;
 $table-outer-border: 1px solid #167F92;
 $table-cell-border: 1px solid #D9E4E6;
 
-// Extra options for table style (parse these arguments when including your mixin)
 $table-border-radius: 10px;
 $table-highlight-color: #EAF3F3;
 $table-header-background-color: #167F92;
@@ -47,7 +92,6 @@ $table-header-border: 1px solid #FFF;
       border: $cell-border;
 
       &:nth-child(odd) {
-        // highlight the odd rows with a color
         background-color: $highlight-color;
       }
     }
