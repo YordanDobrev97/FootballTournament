@@ -1,31 +1,17 @@
-using FootballTournament.Data;
-using FootballTournament.Data.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web.Resource;
+﻿using FootballTournament.Data.Models;
 
-namespace FootballTournament.API.Controllers
+namespace FootballTournament.Data.Seeding
 {
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CountrySeeder
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-        private readonly ILogger<WeatherForecastController> _logger;
         private readonly FootballTournamentContext db;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, FootballTournamentContext db)
+        public CountrySeeder(FootballTournamentContext db)
         {
-            _logger = logger;
             this.db = db;
         }
 
-
-        [HttpGet("/seedCountries")]
-        public async Task<IActionResult> SeedCountries()
+        public async Task Seed()
         {
             var countries = new List<Country>()
             {
@@ -57,8 +43,6 @@ namespace FootballTournament.API.Controllers
             };
 
             await this.db.Countries.AddRangeAsync(countries);
-            await this.db.SaveChangesAsync();
-            return new JsonResult("Successfully seed");
         }
     }
 }
