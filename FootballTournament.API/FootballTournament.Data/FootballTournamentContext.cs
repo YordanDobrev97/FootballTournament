@@ -15,6 +15,12 @@
 
         public DbSet<ApplicationRole> Roles { get; set; }
 
+        public DbSet<Tournament> Tournaments { get; set; }
+
+        public DbSet<Team> Teams { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
