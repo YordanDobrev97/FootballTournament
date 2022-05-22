@@ -12,6 +12,8 @@ namespace FootballTournament.Data.Models
 
         public string Name { get; set; }
 
+        public int MaxCapacity { get; set; }
+
         public ICollection<ApplicationUser> Players { get; set; }
 
         public ApplicationUser Captain { get; set; }

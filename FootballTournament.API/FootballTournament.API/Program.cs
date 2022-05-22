@@ -48,26 +48,6 @@ builder.Services.AddCors(options =>
 builder.Services.AddTransient<ITournamentsService, TournamentsService>();
 var app = builder.Build();
 
-Seed();
-
-void Seed()
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var service = scope.ServiceProvider.GetService<ApplicationDbSeeder>();
-
-        if (service != null)
-        {
-            service.Seed().GetAwaiter().GetResult();
-        }
-        else
-        {
-            Console.WriteLine("Service provider is null");
-        }
-        
-    }
-}
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
