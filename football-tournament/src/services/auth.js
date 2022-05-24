@@ -1,4 +1,4 @@
-import { DEV_API } from '../components/utils/api'
+import { DEV_API } from '../utils/api'
 
 export const authenticate = async (url, method, headers, data) => {
   const token = await fetch(`${DEV_API}/${url}`, {

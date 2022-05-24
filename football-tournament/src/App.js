@@ -18,6 +18,9 @@ import CreateTournament from './pages/Tournament/create'
 import AuthContext from './context/AuthContext'
 
 import './App.css'
+import Team from './pages/Team/index'
+import LayoutTeam from './pages/Team/layoutTeam'
+import NewTeam from './pages/Team/newTeam'
 
 function App() {
   const [cookies] = useCookies(['jwt'])
@@ -35,6 +38,10 @@ function App() {
               <Route path='tournaments' element={<LayoutTournament />}>
                 <Route path='all' element={<Tournament />} />
                 <Route path='create' element={<CreateTournament />} />
+              </Route>
+              <Route path='teams' element={<LayoutTeam />}>
+                <Route path='all' element={<Team />}/>
+                <Route path='new' element={<NewTeam />}/>
               </Route>
             </Route>
           </Routes>

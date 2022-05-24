@@ -28,6 +28,10 @@ const Menu = () => {
           </li>
 
           <li className='nav-item'>
+            <Link to='teams/all'>Teams</Link>
+          </li>
+
+          <li className='nav-item'>
             <Link to='/'>Statistics</Link>
           </li>
           <li className='nav-item'>
