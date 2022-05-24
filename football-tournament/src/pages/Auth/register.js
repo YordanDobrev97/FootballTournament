@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie'
 import Form from '../../components/Auth/Form'
 import Input from '../../components/Auth/Input'
 import { authenticate } from '../../services/auth'
-import { DEFAULT_HEADERS } from '../../components/utils/headers'
+import { DEFAULT_HEADERS } from '../../utils/headers'
 
 import './index.scss'
 

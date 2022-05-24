@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../../utils/request'
 import Input from "../../components/Auth/Input"
 
-
 const NewTeam = () => {
   const [name, setName] = useState('')
   const [capacity, setCapacity] = useState(0)
