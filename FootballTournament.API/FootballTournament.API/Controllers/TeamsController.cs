@@ -20,7 +20,10 @@
         [Route("/teams/all")]
         public async Task<IActionResult> All()
         {
-            var teams = await this.teamsService.All();
+            var token = this.HttpContext.Request.Headers["X-User-Token"].ToString();
+            var userId = GetUserId(token);
+
+            var teams = await this.teamsService.All(userId);
             return new JsonResult(teams);
         }
 

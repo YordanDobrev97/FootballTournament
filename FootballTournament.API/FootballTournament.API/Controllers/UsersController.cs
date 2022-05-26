@@ -1,6 +1,7 @@
 ﻿namespace FootballTournament.API.Controllers
 {
     using FootballTournament.Data.Models;
+    using FootballTournament.Services.Users;
     using FootballTournament.ViewModels.Users;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -10,21 +11,27 @@
     using System.Text;
 
     [ApiController]
-    [Route("/[controller]")]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         private readonly IConfiguration configuration;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
+        private readonly IUsersService usersService;
+
 
         public UsersController(
             IConfiguration configuration,
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            RoleManager<ApplicationRole> roleManager,
+            SignInManager<ApplicationUser> signInManager,
+            IUsersService usersService)
         {
             this.configuration = configuration;
             this.userManager = userManager;
+            this.roleManager = roleManager;
             this.signInManager = signInManager;
+            this.usersService = usersService;
         }
 
         [HttpPost]
@@ -42,8 +49,9 @@
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
-
-            var token = this.GenerateJwtToken(ClaimTypes.NameIdentifier, input.Username);
+            var user = this.userManager.Users.First(x => x.UserName == input.Username);
+            var role = await this.userManager.IsInRoleAsync(user, "Admin");
+            var token = this.GenerateJwtToken(ClaimTypes.NameIdentifier, input.Username, role);
 
             return new JsonResult(token);
         }
@@ -59,16 +67,45 @@
             }
 
             var user = this.userManager.Users.First(x => x.UserName == loginInput.Username);
-            var token = GenerateJwtToken(user.Id, user.UserName);
+            var role = await this.userManager.IsInRoleAsync(user, "Admin");
+            var token = GenerateJwtToken(user.Id, user.UserName, role);
             return new JsonResult(token);
         }
 
-        private object GenerateJwtToken(string id, string username)
+        [HttpGet]
+        [Route("/users/all")]
+        public async Task<IActionResult> All()
+        {
+            var users = await this.usersService.All();
+            return new JsonResult(users);
+        }
+
+        [HttpGet]
+        [Route("/createAdmin")]
+        public async Task<IActionResult> CreateAdminUser()
+        {
+            var newUser = new ApplicationUser()
+            {
+                UserName = "admin",
+            };
+
+            var newRole = new ApplicationRole("Admin");
+
+            var result = await this.userManager.CreateAsync(newUser, "admin-pass");
+            var resRole = await this.roleManager.CreateAsync(newRole);
+
+            await this.userManager.AddToRoleAsync(newUser, "Admin");
+
+            return new JsonResult("Created");
+        }
+        
+        private object GenerateJwtToken(string id, string username, bool isInRole)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, id),
                 new Claim("username", username),
+                new Claim("IsInRole", isInRole.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtKey"]));

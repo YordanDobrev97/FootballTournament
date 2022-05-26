@@ -1,7 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
-import Pagination from "../../components/Pagination";
-import { api } from "../../utils/request";
+import { useState, useEffect, useMemo } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useCookies } from 'react-cookie'
+import Pagination from "../../components/Pagination"
+import { api } from "../../utils/request"
 
 import "./index.scss"
 
@@ -10,10 +11,19 @@ const pageSize = 3;
 const Team = () => {
   const [teams, setTeams] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [cookies] = useCookies(['jwt'])
+  const navigation = useNavigate()
 
   useEffect(() => {
+    if (!cookies?.jwt) {
+      navigation('/login')
+    }
+
     api
-      .get("teams/all")
+      .get("teams/all", {
+        "Content-Type": "application/json",
+        "X-User-Token": cookies?.jwt
+      })
       .then((r) => r.json())
       .then((data) => {
         setTeams(data);
@@ -52,7 +62,11 @@ const Team = () => {
                 <td>{team.maxCapacity}</td>
                 <td>{team.freeCapacity}</td>
                 <td>
-                  <button>Join</button>
+                  {team.isCreated ? (
+                    <button>Remove</button>
+                  ): (
+                    <button>Join</button>
+                  )}
                 </td>
               </tr>
             )

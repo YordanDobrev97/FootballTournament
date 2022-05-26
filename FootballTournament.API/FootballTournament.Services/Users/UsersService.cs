@@ -1,8 +1,10 @@
 ﻿namespace FootballTournament.Services.Users
 {
     using FootballTournament.Data;
-    using FootballTournament.Data.Models;
-    using Microsoft.AspNetCore.Identity;
+    using FootballTournament.ViewModels.Users;
+    using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class UsersService : IUsersService
     {
@@ -11,6 +13,15 @@
         public UsersService(FootballTournamentContext db)
         {
             this.db = db;
+        }
+
+        public async Task<List<UserViewModel>> All()
+        {
+            return await this.db.Users.Select(x => new UserViewModel()
+            {
+                Id = x.Id,
+                Username = x.UserName,
+            }).ToListAsync();
         }
     }
 }

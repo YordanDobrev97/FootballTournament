@@ -15,14 +15,15 @@
             this.db = db;
         }
 
-        public async Task<List<ListTeamViewModel>> All()
+        public async Task<List<ListTeamViewModel>> All(string userId)
         {
             return await this.db.Teams.Select(x => new ListTeamViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
                 MaxCapacity = x.MaxCapacity,
-                FreeCapacity = Math.Abs(x.MaxCapacity - x.Players.Count)
+                FreeCapacity = Math.Abs(x.MaxCapacity - x.Players.Count),
+                IsCreated = x.Captain.Id == userId,
             }).ToListAsync();
         }
 

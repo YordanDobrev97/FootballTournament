@@ -9,7 +9,9 @@ export const api = {
       body: JSON.stringify(data)
     })
   },
-  get: (url) => {
-    return fetch(`${DEV_API}/${url}`)
+  get: (url, headers = null) => {
+    return fetch(`${DEV_API}/${url}`, {
+      headers: headers || DEFAULT_HEADERS
+    })
   }
 }

@@ -10,5 +10,7 @@
         public int MaxCapacity { get; set; }
 
         public int FreeCapacity { get; set; }
+
+        public bool IsCreated { get; set; }
     }
 }
