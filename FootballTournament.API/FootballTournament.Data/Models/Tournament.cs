@@ -30,5 +30,7 @@ namespace FootballTournament.Data.Models
         public ICollection<Team> Teams { get; set; }
 
         public Team Winner { get; set; }
+
+        public DateTime Date { get; set;  }
     }
 }
