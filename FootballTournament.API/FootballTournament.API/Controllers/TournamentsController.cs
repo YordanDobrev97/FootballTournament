@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FootballTournament.API.Controllers
 {
     [ApiController]
-    [Route("/[controller]")]
-    public class TournamentsController : Controller
+    public class TournamentsController : ControllerBase
     {
         private readonly ITournamentsService tournamentsService;
         
@@ -15,11 +14,19 @@ namespace FootballTournament.API.Controllers
             this.tournamentsService = tournamentsService;
         }
 
+        [HttpGet]
+        [Route("/tournaments/all")]
+        public async Task<IActionResult> All()
+        {
+            var tournaments = await this.tournamentsService.All();
+            return new JsonResult(tournaments);
+        }
+
         [HttpPost]
-        [Route("/tournaments")]
+        [Route("/tournaments/create")]
         public async Task<IActionResult> CreateTournamentAsync([FromBody] CreateTournamentInputModel input)
         {
-            var res = await this.tournamentsService.CreateTournamentAsync(input.Name, input.Country, input.Category, input.Price);
+            var res = await this.tournamentsService.CreateTournamentAsync(input);
             return new JsonResult(res);
         }
     }

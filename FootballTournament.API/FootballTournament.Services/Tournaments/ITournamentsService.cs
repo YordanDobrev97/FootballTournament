@@ -1,8 +1,12 @@
 ﻿
 namespace FootballTournament.Services.Tournaments
 {
+    using FootballTournament.ViewModels.Tournaments;
+
     public interface ITournamentsService
     {
-        public Task<bool> CreateTournamentAsync(string name, string country, string category, decimal price);
+        public Task<List<GetTournamentViewModel>> All();
+
+        public Task<bool> CreateTournamentAsync(CreateTournamentInputModel input);
     }
 }

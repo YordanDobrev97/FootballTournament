@@ -1,59 +1,57 @@
-import { Link, Outlet } from 'react-router-dom'
-import './index.scss'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { api } from "../../utils/request";
+import "./index.scss";
 
 const Tournament = () => {
+  const [tournaments, setTournaments] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("tournaments/all")
+      .then((r) => r.json())
+      .then((data) => {
+        setTournaments(data);
+      });
+  }, []);
   return (
     <div>
-      <div className='create-tournament-btn'>
-        <Link to='/tournaments/create'>Create Tournament</Link>
+      <div className="create-tournament-btn">
+        <Link to="/tournaments/create">Create Tournament</Link>
       </div>
 
       <div>
-        <table className="responstable">
-          <tr>
-            <th>Main driver</th>
-            <th data-th="Driver details"><span>First name</span></th>
-            <th>Surname</th>
-            <th>Date of birth</th>
-            <th>Relationship</th>
-          </tr>
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Start Date</th>
+            <th>End Date</th> 
+            <th>Action</th>
+          </thead>
 
-          <tr>
-            <td><input type="radio" /></td>
-            <td>Steve</td>
-            <td>Foo</td>
-            <td>01/01/1978</td>
-            <td>Policyholder</td>
-          </tr>
-
-          <tr>
-            <td><input type="radio" /></td>
-            <td>Steffie</td>
-            <td>Foo</td>
-            <td>01/01/1978</td>
-            <td>Spouse</td>
-          </tr>
-
-          <tr>
-            <td><input type="radio" /></td>
-            <td>Stan</td>
-            <td>Foo</td>
-            <td>01/01/1994</td>
-            <td>Son</td>
-          </tr>
-
-          <tr>
-            <td><input type="radio" /></td>
-            <td>Stella</td>
-            <td>Foo</td>
-            <td>01/01/1992</td>
-            <td>Daughter</td>
-          </tr>
-
+          <tbody>
+          {tournaments &&
+            tournaments.map((tournament) => {
+              return (
+                <tr>
+                  <td>{tournament.name}</td>
+                  <td>
+                    <img className='country-flag' src={tournament.country} alt="country-flag"/>
+                  </td>
+                  <td>{tournament.startDate}</td>
+                  <td>{tournament.endDate}</td>
+                  <td>
+                    <button>Details</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tournament
+export default Tournament;

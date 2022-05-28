@@ -15,8 +15,8 @@ namespace FootballTournament.Data.Models
         public int Id { get; set; }
 
         [Required]
-
         public string Name { get; set; }
+
 
         [ForeignKey("Country")]
         public string CountryId { get; set; }
@@ -29,8 +29,13 @@ namespace FootballTournament.Data.Models
 
         public ICollection<Team> Teams { get; set; }
 
-        public Team Winner { get; set; }
+        public int? WinnerId { get; set; }
 
-        public DateTime Date { get; set;  }
+        public virtual Team Winner { get; set; }
+
+        public DateTime StartDate { get; set;  }
+
+        public DateTime EndDate { get; set; }
+
     }
 }

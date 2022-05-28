@@ -44,6 +44,36 @@
   cursor: pointer;
 }
 
+table {
+  width: 100%;
+	margin: auto;
+
+  thead {
+    background-color: #1A1C28 !important;
+    color: #fff;
+		font-size: 26px;
+		width: 100%;
+
+		td {
+			margin: 5px 15px;
+		}
+  }
+
+  tbody {
+    background-color: #1A1C28 !important;
+    color: #fff;
+		font-size: 26px;
+		width: 100%;
+    
+    tr {
+      img {
+        max-width: 70px;
+        max-height: 60px;
+      }
+    }
+	}
+}
+
 @media only screen and (max-width: 780px) {
   .create-tournament-form {
     width: 100%;
@@ -56,113 +86,17 @@
   }
 }
 
-$table-breakpoint: 480px;
-$table-background-color: #FFF;
-$table-text-color: #024457;
-$table-outer-border: 1px solid #167F92;
-$table-cell-border: 1px solid #D9E4E6;
 
-$table-border-radius: 10px;
-$table-highlight-color: #EAF3F3;
-$table-header-background-color: #167F92;
-$table-header-text-color: #FFF;
-$table-header-border: 1px solid #FFF;
-
-@mixin responstable($breakpoint: $table-breakpoint,
-  $background-color: $table-background-color,
-  $text-color: $table-text-color,
-  $outer-border: $table-outer-border,
-  $cell-border: $table-cell-border,
-  $border-radius: none,
-  $highlight-color: none,
-  $header-background-color: $table-background-color,
-  $header-text-color: $table-text-color,
-  $header-border: $table-cell-border) {
-
-  .responstable {
-    width: 100%;
+.date {
     margin: auto;
-    overflow: hidden;
-    background: $background-color;
-    color: $text-color;
-    border-radius: $border-radius;
-    border: $outer-border;
+    width: 78%;
 
-    tr {
-      border: $cell-border;
-
-      &:nth-child(odd) {
-        background-color: $highlight-color;
-      }
+    input {
+      padding: 10px;
+      border-radius: 21px;
     }
-
-    th {
-      display: none; // hide all the table header for mobile
-      border: $header-border;
-      background-color: $header-background-color;
-      color: $header-text-color;
-
-      &:first-child {
-        display: table-cell;
-        text-align: center;
-      }
-
-      &:nth-child(2) {
-        display: table-cell;
-
-        span {
-          display: none;
-        }
-
-        &:after {
-          content: attr(data-th);
-        }
-      }
-
-      @media (min-width: $breakpoint) {
-        &:nth-child(2) {
-
-          span {
-            display: block;
-          }
-
-          &:after {
-            display: none;
-          }
-        }
-      }
-    }
-
-    td {
-      display: block;
-      word-wrap: break-word;
-      max-width: 7em;
-
-      &:first-child {
-        display: table-cell;
-        text-align: center;
-        border-right: $cell-border;
-      }
-
-      @media (min-width: $breakpoint) {
-        border: $cell-border;
-      }
-    }
-
-    th,
-    td {
-      text-align: left;
-
-      @media (min-width: $breakpoint) {
-        display: table-cell;
-        padding: 1em;
-      }
-    }
-  }
 }
 
-@include responstable($border-radius: $table-border-radius,
-  $highlight-color: $table-highlight-color,
-  $header-background-color: $table-header-background-color,
-  $header-text-color: $table-header-text-color,
-  $header-border: $table-header-border);
+.start {
+  z-index: 1 !important;
+}

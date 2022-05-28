@@ -145,8 +145,11 @@ namespace FootballTournament.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CaptainId")
+                    b.Property<string>("ApplicationUser")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CaptainId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MaxCapacity")
                         .HasColumnType("int");
@@ -160,7 +163,7 @@ namespace FootballTournament.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CaptainId");
+                    b.HasIndex("ApplicationUser");
 
                     b.HasIndex("TournamentId");
 
@@ -182,7 +185,7 @@ namespace FootballTournament.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -192,7 +195,10 @@ namespace FootballTournament.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("WinnerId")
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("WinnerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -321,7 +327,7 @@ namespace FootballTournament.Data.Migrations
                 {
                     b.HasOne("FootballTournament.Data.Models.ApplicationUser", "Captain")
                         .WithMany()
-                        .HasForeignKey("CaptainId");
+                        .HasForeignKey("ApplicationUser");
 
                     b.HasOne("FootballTournament.Data.Models.Tournament", null)
                         .WithMany("Teams")
@@ -340,9 +346,7 @@ namespace FootballTournament.Data.Migrations
 
                     b.HasOne("FootballTournament.Data.Models.Team", "Winner")
                         .WithMany()
-                        .HasForeignKey("WinnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WinnerId");
 
                     b.Navigation("Country");
 

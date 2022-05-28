@@ -75,6 +75,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddTransient<ITournamentsService, TournamentsService>();
 builder.Services.AddTransient<ITeamsService, TeamsService>();
+builder.Services.AddTransient<IUsersService, UsersService>();
 
 var app = builder.Build();
 

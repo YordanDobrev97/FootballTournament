@@ -25,6 +25,5 @@
         {
             base.OnConfiguring(optionsBuilder);
         }
-
     }
 }
