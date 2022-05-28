@@ -2,17 +2,19 @@ import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
+import parseJwt from '../../utils/jwtParser'
 import AuthContext from '../../context/AuthContext'
 
 const Menu = () => {
   const context = useContext(AuthContext)
-  const [removeCookie] = useCookies(['jwt'])
+  const [cookies, _, removeCookie] = useCookies(['jwt'])
+  const user = parseJwt(cookies?.jwt)
   const navigation = useNavigate()
-
+  
   const logOut = () => {
     context.setAuthenticated(false)
     removeCookie('jwt')
-    navigation('/')
+    navigation('/home')
   }
 
   return (
@@ -34,6 +36,9 @@ const Menu = () => {
           <li className='nav-item'>
             <Link to='/'>Statistics</Link>
           </li>
+          {user.IsInRole == 'True' &&  <li className='nav-item'>
+            <Link to='/administration'>Administration</Link>
+          </li>}
           <li className='nav-item'>
             <button className='logout-btn' onClick={logOut}>LogOut</button>
           </li>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useCookies } from 'react-cookie'
 import Pagination from "../../components/Pagination"
 import { api } from "../../utils/request"
+import parseJwt  from '../../utils/jwtParser'
 
 import "./index.scss"
 
@@ -13,6 +14,7 @@ const Team = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cookies] = useCookies(['jwt'])
   const navigation = useNavigate()
+  const user = parseJwt(cookies?.jwt)
 
   useEffect(() => {
     if (!cookies?.jwt) {
@@ -38,11 +40,11 @@ const Team = () => {
 
   return (
     <>
-      <div>
+      {user.IsInRole == 'True' && <div>
         <button>
-        <Link to='/teams/new'>Create</Link>
+          <Link to='/teams/new'>Create</Link>
         </button>
-      </div>
+      </div>}
 
       <table className="table">
         <thead>

@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { api } from "../../utils/request";
-import "./index.scss";
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useCookies } from 'react-cookie'
+import { api } from "../../utils/request"
+import parseJwt  from '../../utils/jwtParser'
+
+import "./index.scss"
 
 const Tournament = () => {
   const [tournaments, setTournaments] = useState([]);
+  const [cookies] = useCookies(['jwt'])
+  const user = parseJwt(cookies?.jwt)
 
   useEffect(() => {
     api
@@ -16,9 +21,9 @@ const Tournament = () => {
   }, []);
   return (
     <div>
-      <div className="create-tournament-btn">
+     {user.IsInRole == 'True' &&  <div className="create-tournament-btn">
         <Link to="/tournaments/create">Create Tournament</Link>
-      </div>
+      </div>}
 
       <div>
         <table>
