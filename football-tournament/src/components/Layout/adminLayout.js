@@ -1,14 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom"
+import './admin.scss'
 
 const AdminLayout = () => {
   return (
     <div className="wrapper">
       <nav>
-        <header>
-          <Link to="/">Back</Link>
-        </header>
-
-        <ul>
+        <ul className='admin-menu'>
           <li>
             <Link to="/administration/home">Home</Link>
           </li>
@@ -22,7 +19,7 @@ const AdminLayout = () => {
             <a>Tournaments</a>
           </li>
           <li>
-            <a>Logout</a>
+            <Link to="/">Back</Link>
           </li>
         </ul>
       </nav>

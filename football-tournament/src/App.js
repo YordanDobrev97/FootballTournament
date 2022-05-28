@@ -21,6 +21,7 @@ import AdminLayout from './components/Layout/adminLayout'
 import Administration from './pages/Administration'
 import UserLayout from './components/User/userLayout'
 import Users from './components/User'
+import UserProfile from './components/User/UserProfile'
 
 import AuthContext from './context/AuthContext'
 
@@ -53,6 +54,7 @@ function App() {
 
               <Route path='users' element={<UserLayout />}>
                 <Route path='all' element={<Users />}/>
+                <Route path=':userId' element={<UserProfile />}/>
               </Route>
             </Route>
           </Routes>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus, faLink } from "@fortawesome/free-solid-svg-icons"
+import { Link } from 'react-router-dom'
 import Search from "../Search"
 import Pagination from "../Pagination"
 import { api } from '../../utils/request'
@@ -56,12 +57,16 @@ const Users = () => {
                     <td>{i}</td>
                     <td>{user.username}</td>
                     <td>
-                      <button className='action-btn'>
-                        <FontAwesomeIcon color="#ffff" icon={faPlus} />
-                      </button>
-                      <button className='action-btn'>
-                        <FontAwesomeIcon color="#ffff" icon={faLink} />
-                      </button>
+                      <Link to='/administration/users/addToTeam'>
+                        <button className='action-btn'>
+                          <FontAwesomeIcon color="#ffff" icon={faPlus} />
+                        </button>
+                      </Link>
+                      <Link to='/administration/users/1'>
+                        <button className='action-btn'>
+                          <FontAwesomeIcon color="#ffff" icon={faLink} />
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 );
