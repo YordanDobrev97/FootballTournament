@@ -20,8 +20,7 @@ body{
   border-radius: 5px 0 0 5px;
   outline: none;
   color: #9DBFAF;
-  margin: 40px 3px;
-
+  margin: 10px 3px;
 }
 
 .searchTerm:focus{
@@ -46,9 +45,5 @@ body{
 }
 
 .wrap{
-  width: 30%;
-  position: absolute;
-  top: 50px;
-  left: 30%;
-  transform: translate(-50%, -50%);
+  width: 100%;
 }

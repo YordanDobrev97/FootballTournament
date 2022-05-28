@@ -1,17 +1,16 @@
-import "./index.scss";
+import './index.scss'
 
-const Search = () => {
+const Search = ({value, searchHandler}) => {
   return (
-    <div class="wrap">
-      <div class="search">
+    <div class='wrap'>
+      <div class='search'>
         <input
-          type="text"
-          class="searchTerm"
-          placeholder="What are you looking for?"
+          type='text'
+          class='searchTerm'
+          value={value}
+          onChange={(e) => searchHandler(e.target.value)}
+          placeholder='Search player by username...'
         />
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
       </div>
     </div>
   );

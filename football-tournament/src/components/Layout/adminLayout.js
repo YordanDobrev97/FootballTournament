@@ -13,7 +13,7 @@ const AdminLayout = () => {
             <Link to="/administration/home">Home</Link>
           </li>
           <li>
-            <Link to="/administration/users">Users</Link>
+            <Link to="/administration/users/all">Users</Link>
           </li>
           <li>
             <a>Teams</a>
