@@ -1,6 +1,6 @@
 import './index.scss'
 
-const Search = ({value, searchHandler}) => {
+const Search = ({ value, searchHandler, placeholderValue }) => {
   return (
     <div class='wrap'>
       <div class='search'>
@@ -9,7 +9,7 @@ const Search = ({value, searchHandler}) => {
           class='searchTerm'
           value={value}
           onChange={(e) => searchHandler(e.target.value)}
-          placeholder='Search player by username...'
+          placeholder={placeholderValue}
         />
       </div>
     </div>

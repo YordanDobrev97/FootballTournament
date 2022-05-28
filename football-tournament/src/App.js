@@ -22,6 +22,8 @@ import Administration from './pages/Administration'
 import UserLayout from './components/User/userLayout'
 import Users from './components/User'
 import UserProfile from './components/User/UserProfile'
+import TeamLayout from './components/Team/teamLayout'
+import AllTeams from './components/Team'
 
 import AuthContext from './context/AuthContext'
 
@@ -55,6 +57,10 @@ function App() {
               <Route path='users' element={<UserLayout />}>
                 <Route path='all' element={<Users />}/>
                 <Route path=':userId' element={<UserProfile />}/>
+              </Route>
+
+              <Route path='teams' element={<TeamLayout />}>
+                <Route path='all' element={<AllTeams />}/>
               </Route>
             </Route>
           </Routes>

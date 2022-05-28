@@ -42,7 +42,7 @@ const Users = () => {
   return (
     <div>
       <header>
-        <Search value={search} searchHandler={setSearch}/>
+        <Search value={search} searchHandler={setSearch} placeholderValue='Search player by username...'/>
         <div>
           <table>
             <thead>
