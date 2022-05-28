@@ -37,7 +37,7 @@ const Menu = () => {
             <Link to='/'>Statistics</Link>
           </li>
           {user.IsInRole == 'True' &&  <li className='nav-item'>
-            <Link to='/administration'>Administration</Link>
+            <Link to='/administration/home'>Administration</Link>
           </li>}
           <li className='nav-item'>
             <button className='logout-btn' onClick={logOut}>LogOut</button>

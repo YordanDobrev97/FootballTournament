@@ -3,24 +3,28 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Outlet
 } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
 import Layout from './components/Layout'
-import Navbar from './components/Navbar/index'
 import Home from './pages/Home/index'
 import Login from './pages/Auth/login'
 import Register from './pages/Auth/register'
 import LayoutTournament from './pages/Tournament/layoutTournament'
 import Tournament from './pages/Tournament'
 import CreateTournament from './pages/Tournament/create'
-import AuthContext from './context/AuthContext'
-
-import './App.css'
 import Team from './pages/Team/index'
 import LayoutTeam from './pages/Team/layoutTeam'
 import NewTeam from './pages/Team/newTeam'
+
+import AdminLayout from './components/Layout/adminLayout'
+import Administration from './pages/Administration'
+import UserLayout from './components/User/userLayout'
+import Users from './components/User'
+
+import AuthContext from './context/AuthContext'
+
+import './App.css'
 
 function App() {
   const [cookies] = useCookies(['jwt'])
@@ -42,6 +46,13 @@ function App() {
               <Route path='teams' element={<LayoutTeam />}>
                 <Route path='all' element={<Team />}/>
                 <Route path='new' element={<NewTeam />}/>
+              </Route>
+            </Route>
+            <Route path='administration' element={<AdminLayout />}>
+              <Route path='home' element={<Administration />}/>
+
+              <Route path='users' element={<UserLayout />}>
+                <Route path='all' element={<Users />}/>
               </Route>
             </Route>
           </Routes>
