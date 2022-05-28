@@ -32,6 +32,15 @@ const AllTeams = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (!search) {
+      setTempTeams(teams)
+    } else {
+      const filtered = tempTeams.filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
+      setTempTeams(filtered)
+    }
+  }, [search])
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
