@@ -99,6 +99,11 @@ body::before {
   font-size: 20px;
 }
 
+.loader {
+  margin: auto;
+  width: 40%;
+}
+
 @keyframes ani9 {
   0% {
     transform: translateY(3px);
