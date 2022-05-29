@@ -20,5 +20,10 @@ export const api = {
       headers: DEFAULT_HEADERS,
       body: JSON.stringify(data)
     })
+  },
+  delete: (url, id) => {
+    return fetch(`${DEV_API}/${url}/${id}`, {
+      method: 'DELETE'
+    })
   }
 }

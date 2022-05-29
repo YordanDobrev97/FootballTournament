@@ -42,6 +42,13 @@ const AllTeams = () => {
     }
   }, [search])
 
+  const remove = async (id) => {
+    api.delete('teams', id)
+      .then((res) => {
+        setTempTeams(tempTeams.filter((t) => t.id !== id))
+      })
+  }
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
@@ -83,11 +90,9 @@ const AllTeams = () => {
                         <FontAwesomeIcon color="#ffff" icon={faEdit} />
                       </button>
                     </Link>
-                    <Link to={`/administration/teams/delete/${team.id}`}>
-                      <button className="action-btn">
-                        <FontAwesomeIcon color="#ffff" icon={faTrash} />
-                      </button>
-                    </Link>
+                    <button className="action-btn" onClick={() => remove(team.id)}>
+                      <FontAwesomeIcon color="#ffff" icon={faTrash} />
+                    </button>
                   </td>
                 </tr>
               );
