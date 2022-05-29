@@ -47,7 +47,7 @@
 
             if (!result.Succeeded)
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Password too short. Passwords must be at least 6 characters." });
             }
             var user = this.userManager.Users.First(x => x.UserName == input.Username);
             var role = await this.userManager.IsInRoleAsync(user, "Admin");
