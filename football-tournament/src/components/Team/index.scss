@@ -1,0 +1,40 @@
+
+.edit-container {
+  max-width: 80%;
+  margin: 15px auto;
+
+  .row {
+    margin: 10px 0;
+
+    label {
+      color: #ffff;
+      font-size: 24px;
+    }
+    input {
+      border: none;
+      border-radius: 100px;
+    }
+  }
+
+  .captain {
+    padding: 14px 5px;
+    margin: 5px auto;
+    border: none;
+    font-size: 18px;
+    display: flex;
+    width: 90%;
+    text-align: center;
+
+    option {
+      border: none;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .update {
+    background-color: rgb(12, 172, 12);
+    color: #ffff;
+    width: 80%;
+  }
+}

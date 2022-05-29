@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react"
 import { Link } from "react-router-dom"
 import { useCookies } from "react-cookie"
 import ClipLoader from "react-spinners/ClipLoader"
@@ -26,6 +26,7 @@ const AllTeams = () => {
       })
       .then((r) => r.json())
       .then((data) => {
+        console.log(data)
         setTeams(data);
         setTempTeams(data);
         setLoading(false);
@@ -70,14 +71,14 @@ const AllTeams = () => {
                   <td>{team.id}</td>
                   <td>{team.name}</td>
                   <td>{team.maxCapacity}</td>
-                  <td>{team.captain}</td>
+                  <td>{team.captain.username}</td>
                   <td>
                     <Link to={`/administration/teams/details/${team.id}`}>
                       <button className="action-btn">
                         <FontAwesomeIcon color="#ffff" icon={faLink} />
                       </button>
                     </Link>
-                    <Link to={`/administration/teams/edit/${team.id}`}>
+                    <Link to={`/administration/teams/${team.id}`}>
                       <button className="action-btn">
                         <FontAwesomeIcon color="#ffff" icon={faEdit} />
                       </button>

@@ -43,6 +43,30 @@
             return res;
         }
 
+        [HttpPut]
+        [Route("/teams/update")]
+        public async Task<bool> Update([FromBody] UpdateTeamInputModel input)
+        {
+            var res = await this.teamsService.Update(input.Id, input.Name, input.MaxCapacity, input.NewCaptainId);
+            return res;
+        }
+
+        [HttpGet]
+        [Route("/teams/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var res = await this.teamsService.GetById(id);
+            return new JsonResult(res);
+        }
+
+        [HttpDelete]
+        [Route("/teams/{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            var res = await this.teamsService.Delete(id);
+            return res;
+        }
+
         private string GetUserId(Microsoft.Extensions.Primitives.StringValues cookie)
         {
             var handler = new JwtSecurityTokenHandler();

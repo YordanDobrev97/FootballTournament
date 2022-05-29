@@ -13,5 +13,12 @@ export const api = {
     return fetch(`${DEV_API}/${url}`, {
       headers: headers || DEFAULT_HEADERS
     })
+  },
+  put: (url, data) => {
+    return fetch(`${DEV_API}/${url}`, {
+      method: 'PUT',
+      headers: DEFAULT_HEADERS,
+      body: JSON.stringify(data)
+    })
   }
 }

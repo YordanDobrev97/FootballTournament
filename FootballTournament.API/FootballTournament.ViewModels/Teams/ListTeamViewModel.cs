@@ -12,5 +12,7 @@
         public int FreeCapacity { get; set; }
 
         public bool IsCreated { get; set; }
+
+        public CaptainViewModel Captain { get; set; }
     }
 }

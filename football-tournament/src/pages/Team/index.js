@@ -32,6 +32,7 @@ const Team = () => {
       .then((r) => r.json())
       .then((data) => {
         setTeams(data);
+        console.log(data)
         setLoading(false)
       });
   }, []);
