@@ -79,7 +79,7 @@ const AllTeams = () => {
                   <td>{team.maxCapacity}</td>
                   <td>{team.captain.username}</td>
                   <td>
-                    <Link to={`/administration/teams/details/${team.id}`}>
+                    <Link to={`/administration/teams/addToTournament/${team.id}`}>
                       <button className="action-btn">
                         <FontAwesomeIcon color="#ffff" icon={faLink} />
                       </button>

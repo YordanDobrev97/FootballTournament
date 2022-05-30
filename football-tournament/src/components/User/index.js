@@ -53,18 +53,13 @@ const Users = () => {
             <tbody>
               {currentTableData.map((user, i) => {
                 return (
-                  <tr>
+                  <tr key={user.id}>
                     <td>{i}</td>
                     <td>{user.username}</td>
                     <td>
-                      <Link to='/administration/users/addToTeam'>
+                      <Link to={`/administration/users/${user.id}`}>
                         <button className='action-btn'>
                           <FontAwesomeIcon color="#ffff" icon={faPlus} />
-                        </button>
-                      </Link>
-                      <Link to='/administration/users/1'>
-                        <button className='action-btn'>
-                          <FontAwesomeIcon color="#ffff" icon={faLink} />
                         </button>
                       </Link>
                     </td>
