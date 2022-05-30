@@ -60,7 +60,6 @@ const Create = () => {
           <select onChange={(e) => setCountry(e.target.value)} className="col">
             <option value='select'>Select country</option>
             <option value='Bulgaria'>Bulgaria</option>
-            <option value='United States'>USA</option>
             <option value='United Kingdom'>UK</option>
             <option value='France'>France</option>
             <option value='Spain'>Spain</option>

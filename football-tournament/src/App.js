@@ -25,7 +25,9 @@ import UserProfile from './components/User/UserProfile'
 import TeamLayout from './components/Team/teamLayout'
 import AllTeams from './components/Team'
 import Edit from './components/Team/edit'
-
+import TournamentLayout from './components/Tournament/tournamentLayout'
+import Tournaments from './components/Tournament'
+import GetById from './components/Tournament/getById'
 import AuthContext from './context/AuthContext'
 
 import './App.css'
@@ -63,6 +65,11 @@ function App() {
               <Route path='teams' element={<TeamLayout />}>
                 <Route path='all' element={<AllTeams />}/>
                 <Route path=':id' element={<Edit />}/>
+              </Route>
+
+              <Route path='tournaments' element={<TournamentLayout />}>
+                <Route path='all' element={<Tournaments />}/>
+                <Route path=':id' element={<GetById />}/>
               </Route>
             </Route>
           </Routes>

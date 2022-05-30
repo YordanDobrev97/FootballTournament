@@ -23,7 +23,6 @@ const AdminLayout = () => {
           </li>
         </ul>
       </nav>
-      <h1>Welcome to Administration</h1>
       <Outlet />
     </div>
   );

@@ -1,9 +1,9 @@
-﻿using FootballTournament.Services.Tournaments;
-using FootballTournament.ViewModels.Tournaments;
-using Microsoft.AspNetCore.Mvc;
-
-namespace FootballTournament.API.Controllers
+﻿namespace FootballTournament.API.Controllers
 {
+    using FootballTournament.Services.Tournaments;
+    using FootballTournament.ViewModels.Tournaments;
+    using Microsoft.AspNetCore.Mvc;
+
     [ApiController]
     public class TournamentsController : ControllerBase
     {
@@ -27,6 +27,46 @@ namespace FootballTournament.API.Controllers
         public async Task<IActionResult> CreateTournamentAsync([FromBody] CreateTournamentInputModel input)
         {
             var res = await this.tournamentsService.CreateTournamentAsync(input);
+            return new JsonResult(res);
+        }
+
+        [HttpPost]
+        [Route("/tournaments/addTeam")]
+        public async Task<bool> AddTeam([FromBody] AddTeamInputModel input)
+        {
+            var res = await this.tournamentsService.AddTeam(input.TeamId, input.TournamentId);
+            return res;
+        }
+
+        [HttpGet]
+        [Route("/tournaments/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var res = await this.tournamentsService.GetById(id);
+            return new JsonResult(res);
+        }
+
+        [HttpPut]
+        [Route("/tournaments/update")]
+        public async Task<bool> Update([FromBody] GetTournamentViewModel input)
+        {
+            var res = await this.tournamentsService.Update(input);
+            return res;
+        }
+
+        [HttpDelete]
+        [Route("/tournaments/{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            var res = await this.tournamentsService.Delete(id);
+            return res;
+        }
+
+        [HttpGet]
+        [Route("/countries")]
+        public async Task<IActionResult> GetCountries()
+        {
+            var res = await this.tournamentsService.GetCountries();
             return new JsonResult(res);
         }
     }

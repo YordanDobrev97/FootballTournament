@@ -119,6 +119,30 @@ main {
   color: #999;
 }
 
+.row {
+  label {
+    color: #ffff;
+    font-size: 22px;
+  }
+  select {
+    padding: 15px;
+    width: 100%;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 22px;
+  }
+  input {
+    border: none;
+    border-radius: 100px;
+  }
+}
+
+.update {
+  background-color: rgb(12, 172, 12);
+  color: #ffff;
+  width: 80%;
+}
+
 @media (max-width: 1000px) { 
 
   .flex-grid {
