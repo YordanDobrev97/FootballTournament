@@ -18,5 +18,7 @@ namespace FootballTournament.Services.Tournaments
         public Task<bool> AddTeam(int teamId, int tournamentId);
 
         public Task<List<GetCountriesViewModel>> GetCountries();
+
+        public List<GetTheBestTeam> GetTheBestTeams();
     }
 }

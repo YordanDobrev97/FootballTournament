@@ -69,5 +69,14 @@
             var res = await this.tournamentsService.GetCountries();
             return new JsonResult(res);
         }
+
+        [HttpGet]
+        [Route("/tournaments/theBestTeams")]
+        public IActionResult GetTheBestTeams()
+        {
+            var res = this.tournamentsService.GetTheBestTeams();
+
+            return new JsonResult(res);
+        }
     }
 }

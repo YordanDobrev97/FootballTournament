@@ -118,6 +118,20 @@
             }).ToListAsync();
         }
 
+        public List<GetTheBestTeam> GetTheBestTeams()
+        {
+            var winners = this.db.Tournaments
+                .GroupBy(x => x.Winner.Name)
+                .Select(x => new GetTheBestTeam()
+                {
+                    Name = x.Key,
+                    CountWinners = x.Count()
+                })
+                .ToList();
+            
+            return winners;
+        }
+
         public async Task<bool> Update(GetTournamentViewModel input)
         {
             var tournament = await this.db.Tournaments.FirstOrDefaultAsync(x => x.Id == input.Id);
