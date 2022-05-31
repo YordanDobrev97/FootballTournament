@@ -4,13 +4,16 @@ import './index.scss'
 
 const Statistics = () => {
   const [teams, setTeams] = useState([])
+  const [tournaments, setTournaments] = useState([])
 
   useEffect(() => {
     api.get('tournaments/theBestTeams')
       .then(r => r.json())
-      .then((data) => {
-        setTeams(data)
-      })
+      .then((data) => setTeams(data))
+    
+    api.get('tournaments/mostExpensive')
+      .then(r => r.json())
+      .then((data) => setTournaments(data))
   }, [])
 
   return (
@@ -49,10 +52,14 @@ const Statistics = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>Fifa</td>
-              <td>20000000</td>
-            </tr>
+            {tournaments && tournaments.map((t) => {
+              return (
+                <tr>
+                  <td>{t.name}</td>
+                  <td>{t.price}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
