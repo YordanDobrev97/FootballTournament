@@ -88,6 +88,14 @@
             return new JsonResult(res);
         }
 
+        [HttpPost]
+        [Route("/users/addRanking")]
+        public async Task<IActionResult> AddRanking([FromBody] AddUserRankingInputModel input)
+        {
+            var res = await this.usersService.AddRanking(input.Id);
+            return new JsonResult(res);
+        }
+
         [HttpGet]
         [Route("/createAdmin")]
         public async Task<IActionResult> CreateAdminUser()

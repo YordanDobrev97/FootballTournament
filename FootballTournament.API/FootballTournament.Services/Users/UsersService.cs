@@ -33,5 +33,20 @@
 
             return user;
         }
+
+        public async Task<bool> AddRanking(string userId)
+        {
+            var user = await this.db.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.Ranking += 1;
+            this.db.Users.Update(user);
+            await this.db.SaveChangesAsync();
+            return true;
+        }
     }
 }
