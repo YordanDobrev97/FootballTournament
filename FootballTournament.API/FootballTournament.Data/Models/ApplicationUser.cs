@@ -8,5 +8,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
         }
+
+        public int Ranking { get; set; }
     }
 }
