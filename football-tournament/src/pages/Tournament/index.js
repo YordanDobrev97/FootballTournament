@@ -1,34 +1,34 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import ClipLoader from "react-spinners/ClipLoader";
-import { api } from "../../utils/request";
-import parseJwt from "../../utils/jwtParser";
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { api } from '../../utils/request'
+import parseJwt from '../../utils/jwtParser'
 
-import "./index.scss";
+import './index.scss'
 
 const Tournament = () => {
-  const [tournaments, setTournaments] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [cookies] = useCookies(["jwt"]);
-  const user = parseJwt(cookies?.jwt);
+  const [tournaments, setTournaments] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [cookies] = useCookies(['jwt'])
+  const user = parseJwt(cookies?.jwt)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
 
     api
-      .get("tournaments/all")
+      .get('tournaments/all')
       .then((r) => r.json())
       .then((data) => {
-        setLoading(false);
-        setTournaments(data);
+        setLoading(false)
+        setTournaments(data)
       });
   }, []);
   return (
     <div>
-      {user.IsInRole == "True" && (
-        <div className="create-tournament-btn">
-          <Link to="/tournaments/create">Create Tournament</Link>
+      {user.IsInRole == 'True' && (
+        <div className='create-tournament-btn'>
+          <Link to='/tournaments/create'>Create Tournament</Link>
         </div>
       )}
 
@@ -44,8 +44,8 @@ const Tournament = () => {
 
           <tbody>
             {loading ? (
-              <div className="loader">
-                <ClipLoader color="#ffff" loading={loading} size={150} />
+              <div className='loader'>
+                <ClipLoader color='#ffff' loading={loading} size={150} />
               </div>
             ) : (
               tournaments.map((tournament) => {
@@ -54,9 +54,9 @@ const Tournament = () => {
                     <td>{tournament.name}</td>
                     <td>
                       <img
-                        className="country-flag"
+                        className='country-flag'
                         src={tournament.country}
-                        alt="country-flag"
+                        alt='country-flag'
                       />
                     </td>
                     <td>{tournament.startDate}</td>

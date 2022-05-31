@@ -83,32 +83,28 @@ main {
 
 .flex-grid {
   display: flex;
-}
 
-.flex-grid > div {
-  flex: 1;
-  margin: 0 20px 20px 0;
-  padding: 15px;
-  border: 1px solid #ddd;
-  background: #fff;
-}
+  h2 {
+    margin: -15px -15px 15px -15px;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #ddd;
+  }
 
-.flex-grid > div:last-child {
-  margin-right: 0;
-}
+  div {
+    flex: 1;
+    margin: 0 20px 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #fff;
+  }
 
-.flex-grid h2 {
-  margin: -15px -15px 15px -15px;
-  padding: 12px 15px;
-  font-size: 14px;
-  font-weight: 400;
-  border-bottom: 1px solid #ddd;
-}
-
-.flex-grid li {
-  position: relative;
-  margin: 0 0 10px;
-  padding: 0 0 0 25px;
+  li {
+    position: relative;
+    margin: 0 0 10px;
+    padding: 0 0 0 25px;
+  }
 }
 
 .flex-grid li:before {
@@ -144,7 +140,6 @@ main {
 }
 
 @media (max-width: 1000px) { 
-
   .flex-grid {
     flex-direction: column;
   }

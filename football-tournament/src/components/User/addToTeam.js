@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useCookies } from "react-cookie"
+import { useCookies } from 'react-cookie'
 import { useParams, useNavigate } from 'react-router-dom'
 import Input from '../Auth/Input'
 import { api } from '../../utils/request'
@@ -9,16 +9,16 @@ const AddToTeam = () => {
   const [player, setPlayer] = useState('')
   const [team, setTeam] = useState('')
   const [teams, setTeams] = useState([]) 
-  const [cookies] = useCookies(["jwt"])
+  const [cookies] = useCookies(['jwt'])
 
   const params = useParams()
   const navigation = useNavigate()
 
   useEffect(() => {
     api
-      .get("teams/all", {
-        "Content-Type": "application/json",
-        "X-User-Token": cookies?.jwt,
+      .get('teams/all', {
+        'Content-Type': 'application/json',
+        'X-User-Token': cookies?.jwt,
       })
       .then((r) => r.json())
       .then((data) => {

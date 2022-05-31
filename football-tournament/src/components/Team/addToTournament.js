@@ -1,29 +1,27 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
-import { api } from "../../utils/request";
-import Input from "../Auth/Input";
+import { api } from '../../utils/request'
+import Input from '../Auth/Input'
 
 const AddToTournament = () => {
-  const [team, setTeam] = useState("");
-  const [tournament, setTournament] = useState("");
-  const [tournaments, setTournaments] = useState([]);
+  const [team, setTeam] = useState('')
+  const [tournament, setTournament] = useState('')
+  const [tournaments, setTournaments] = useState([])
 
-  const params = useParams();
-  const [cookies] = useCookies(["jwt"]);
-  const navigate = useNavigate();
-  console.log(params);
-
+  const params = useParams()
+  const [cookies] = useCookies(['jwt'])
+  const navigate = useNavigate()
+ 
   useEffect(() => {
     api
-      .get("tournaments/all", {
-        "Content-Type": "application/json",
-        "X-User-Token": cookies?.jwt,
+      .get('tournaments/all', {
+        'Content-Type': 'application/json',
+        'X-User-Token': cookies?.jwt,
       })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data)
         setTournaments(data);
       });
 
@@ -36,32 +34,31 @@ const AddToTournament = () => {
   }, []);
 
   const addToTournament = () => {
-    console.log(tournament)
     api
-      .post("tournaments/addTeam", {
+      .post('tournaments/addTeam', {
         teamId: params.teamId,
         tournamentId: tournament,
       })
       .then((response) => {
         if (response.ok) {
-          navigate("/administration/tournaments/all");
+          navigate('/administration/tournaments/all');
         }
       });
   };
 
   return (
     <div>
-      <div className="row">
+      <div className='row'>
         <label>Team</label>
         <Input
-          label="Name"
-          id="name"
+          label='Name'
+          id='name'
           value={team.name}
           onChange={(e) => setTeam(e.target.value)}
         />
       </div>
 
-      <div className="row">
+      <div className='row'>
         <label>Tournament</label>
         <select onChange={(e) => setTournament(e.target.value)}>
           <option>Select tournament</option>

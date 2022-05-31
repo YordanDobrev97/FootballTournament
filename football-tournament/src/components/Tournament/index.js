@@ -1,11 +1,11 @@
-import { useState, useEffect, useMemo } from "react"
-import { Link } from "react-router-dom"
-import { useCookies } from "react-cookie"
-import ClipLoader from "react-spinners/ClipLoader"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLink, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { api } from "../../utils/request"
-import Pagination from "../Pagination"
+import { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLink, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { api } from '../../utils/request'
+import Pagination from '../Pagination'
 import Search from '../Search'
 
 const Tournaments = () => {
@@ -15,14 +15,14 @@ const Tournaments = () => {
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [pageSize] = useState(3)
-  const [cookies] = useCookies(["jwt"])
+  const [cookies] = useCookies(['jwt'])
 
   useEffect(() => {
     setLoading(true);
     api
-      .get("tournaments/all", {
-        "Content-Type": "application/json",
-        "X-User-Token": cookies?.jwt,
+      .get('tournaments/all', {
+        'Content-Type': 'application/json',
+        'X-User-Token': cookies?.jwt,
       })
       .then((r) => r.json())
       .then((data) => {
@@ -60,8 +60,8 @@ const Tournaments = () => {
       </thead>
       <tbody>
         {loading ? (
-          <div className="loader">
-            <ClipLoader color="#ffff" loading={loading} size={150} />
+          <div className='loader'>
+            <ClipLoader color='#ffff' loading={loading} size={150} />
           </div>
         ) : (
           currentTableData.map((tournament) => {
@@ -76,18 +76,13 @@ const Tournaments = () => {
                 <td>{tournament.startDate}</td>
                 <td>{tournament.endDate}</td>
                 <td>
-                  <Link to={`/administration/tournaments/details/${tournament.id}`}>
-                    <button className="action-btn">
-                      <FontAwesomeIcon color="#ffff" icon={faLink} />
-                    </button>
-                  </Link>
                   <Link to={`/administration/tournaments/${tournament.id}`}>
-                    <button className="action-btn">
-                      <FontAwesomeIcon color="#ffff" icon={faEdit} />
+                    <button className='action-btn'>
+                      <FontAwesomeIcon color='#ffff' icon={faEdit} />
                     </button>
                   </Link>
-                  <button className="action-btn" onClick={() => remove(tournament.id)}>
-                    <FontAwesomeIcon color="#ffff" icon={faTrash} />
+                  <button className='action-btn' onClick={() => remove(tournament.id)}>
+                    <FontAwesomeIcon color='#ffff' icon={faTrash} />
                   </button>
                 </td>
               </tr>

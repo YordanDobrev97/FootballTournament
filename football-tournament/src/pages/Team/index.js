@@ -1,13 +1,13 @@
-import { useState, useEffect, useMemo } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useState, useEffect, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
-import ClipLoader from "react-spinners/ClipLoader"
+import ClipLoader from 'react-spinners/ClipLoader'
 
-import Pagination from "../../components/Pagination"
-import { api } from "../../utils/request"
+import Pagination from '../../components/Pagination'
+import { api } from '../../utils/request'
 import parseJwt  from '../../utils/jwtParser'
 
-import "./index.scss"
+import './index.scss'
 
 const pageSize = 3;
 
@@ -25,14 +25,13 @@ const Team = () => {
     }
     setLoading(true)
     api
-      .get("teams/all", {
-        "Content-Type": "application/json",
-        "X-User-Token": cookies?.jwt
+      .get('teams/all', {
+        'Content-Type': 'application/json',
+        'X-User-Token': cookies?.jwt
       })
       .then((r) => r.json())
       .then((data) => {
-        setTeams(data);
-        console.log(data)
+        setTeams(data)
         setLoading(false)
       });
   }, []);
@@ -51,10 +50,10 @@ const Team = () => {
         </button>
       </div>}
 
-      <table className="table">
+      <table className='table'>
         <thead>
           <td>#Team</td>
-          <td classname="name">Name</td>
+          <td classname='name'>Name</td>
           <td>Max Capacity</td>
           <td>Free Capacity</td>
           <td>Action</td>
@@ -68,9 +67,9 @@ const Team = () => {
         ) : (
           currentTableData.map((team) => {
             return (
-              <tr className="top">
+              <tr className='top'>
                 <td>{team.id}</td>
-                <td className="name">{team.name}</td>
+                <td className='name'>{team.name}</td>
                 <td>{team.maxCapacity}</td>
                 <td>{team.freeCapacity}</td>
                 <td>

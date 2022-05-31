@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlus, faLink } from "@fortawesome/free-solid-svg-icons"
+import { useState, useEffect, useMemo } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faLink } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import Search from "../Search"
-import Pagination from "../Pagination"
+import Search from '../Search'
+import Pagination from '../Pagination'
 import { api } from '../../utils/request'
 
 import './index.scss'
@@ -70,14 +70,14 @@ const Users = () => {
                     <td>
                       <Link to={`/administration/users/${user.id}`}>
                         <button className='action-btn'>
-                          <FontAwesomeIcon color="#ffff" icon={faLink} />
+                          <FontAwesomeIcon color='#ffff' icon={faLink} />
                         </button>
                       </Link>
 
                       <input className='ranking-value'
                       type='number' value={user.ranking} />
                       <button className='action-btn' onClick={(e) => addRanking(user.id)}>
-                        <FontAwesomeIcon color="#ffff" icon={faPlus} />
+                        <FontAwesomeIcon color='#ffff' icon={faPlus} />
                       </button>
                     </td>
                   </tr>

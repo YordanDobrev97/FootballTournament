@@ -40,7 +40,7 @@ function App() {
   const [isAuthenticated, setAuthenticated] = useState(cookies?.jwt || false)
 
   return (
-    <div className="App">
+    <div className='App'>
       <AuthContext.Provider value={{ isAuthenticated, setAuthenticated }}>
         <Router>
           <Routes>

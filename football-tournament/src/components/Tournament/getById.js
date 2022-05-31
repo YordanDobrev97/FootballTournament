@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import ModernDatepicker from "react-modern-datepicker"
+import ModernDatepicker from 'react-modern-datepicker'
 import { useCookies } from 'react-cookie'
 
 import Input from '../Auth/Input'
@@ -49,8 +49,8 @@ const GetById = () => {
 
   const getTeams = async () => {
     const res = await api.get('teams/all', {
-      "Content-Type": "application/json",
-      "X-User-Token": cookies?.jwt
+      'Content-Type': 'application/json',
+      'X-User-Token': cookies?.jwt
     })
     return res.json()
   }
@@ -68,8 +68,8 @@ const GetById = () => {
   }
   return (
     <div>
-     <form class="form" id="form1" onSubmit={onSubmit}>
-          <div class="row">
+     <form class='form' id='form1' onSubmit={onSubmit}>
+          <div class='row'>
             <Input
             label='Name'
             id='name'
@@ -77,27 +77,27 @@ const GetById = () => {
             onChange={(e) => setName(e.target.value)}/>
           </div>
 
-          <div className="row date">
+          <div className='row date'>
             <ModernDatepicker
               date={startDate}
-              format={"DD-MM-YYYY HH:mm"}
+              format={'DD-MM-YYYY HH:mm'}
               showBorder
               onChange={(date) => setStartDate(date)}
-              placeholder={"Select end date"}
+              placeholder={'Select end date'}
             />
           </div>
 
-          <div className="row date">
+          <div className='row date'>
             <ModernDatepicker
               date={endDate}
-              format={"DD-MM-YYYY HH:mm"}
+              format={'DD-MM-YYYY HH:mm'}
               showBorder
               onChange={(date) => setEndDate(date)}
-              placeholder={"Select end date"}
+              placeholder={'Select end date'}
             />
           </div>
 
-          <div class="row">
+          <div class='row'>
             <select onChange={(e) => setCountry(e.target.value)}>
               <option>Select new country</option>
               {countries.map((c) => {
@@ -127,7 +127,7 @@ const GetById = () => {
             </select>
           </div>
 
-          <div className="row">
+          <div className='row'>
             <Input
               label='Price'
               id='price'

@@ -1,7 +1,6 @@
-import { useState } from "react";
-import ModernDatepicker from "react-modern-datepicker";
+import { useState } from 'react'
+import ModernDatepicker from 'react-modern-datepicker'
 import { api } from '../../utils/request'
-import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
@@ -12,7 +11,6 @@ const Create = () => {
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState(0)
 
-  const [cookies] = useCookies(['jwt'])
   const navigation = useNavigate()
 
   const onSubmit = (e) => {
@@ -31,33 +29,33 @@ const Create = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="create-tournament-form">
-        <div className="row">
-          <input onChange={(e) => setName(e.target.value)} className="col" type="text" placeholder="Name" />
+      <form onSubmit={onSubmit} className='create-tournament-form'>
+        <div className='row'>
+          <input onChange={(e) => setName(e.target.value)} className='col' type='text' placeholder='Name' />
         </div>
 
-        <div className="row start date">
+        <div className='row start date'>
           <ModernDatepicker
             date={startDate}
-            format={"DD-MM-YYYY HH:mm"}
+            format={'DD-MM-YYYY HH:mm'}
             showBorder
             onChange={(date) => setStartDate(date)}
-            placeholder={"Select start date"}
+            placeholder={'Select start date'}
           />
         </div>
 
-        <div className="row date">
+        <div className='row date'>
           <ModernDatepicker
             date={endDate}
-            format={"DD-MM-YYYY HH:mm"}
+            format={'DD-MM-YYYY HH:mm'}
             showBorder
             onChange={(date) => setEndDate(date)}
-            placeholder={"Select end date"}
+            placeholder={'Select end date'}
           />
         </div>
         
-        <div className="row country">
-          <select onChange={(e) => setCountry(e.target.value)} className="col">
+        <div className='row country'>
+          <select onChange={(e) => setCountry(e.target.value)} className='col'>
             <option value='select'>Select country</option>
             <option value='Bulgaria'>Bulgaria</option>
             <option value='United Kingdom'>UK</option>
@@ -67,20 +65,20 @@ const Create = () => {
           </select>
         </div>
 
-        <div className="row">
-          <select className="col" onChange={(e) => setCategory(e.target.value)}>
+        <div className='row'>
+          <select className='col' onChange={(e) => setCategory(e.target.value)}>
             <option value='select'>Select category</option>
             <option value='Junior'>Junior</option>
             <option value='Adult'>Adult</option>
           </select>
         </div>
 
-        <div className="row">
-          <input onChange={(e) => setPrice(e.target.value)} className="col" type="number" placeholder="Price" />
+        <div className='row'>
+          <input onChange={(e) => setPrice(e.target.value)} className='col' type='number' placeholder='Price' />
         </div>
 
         <div>
-          <button className="create-btn">Create</button>
+          <button className='create-btn'>Create</button>
         </div>
       </form>
     </div>

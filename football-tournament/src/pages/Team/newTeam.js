@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
-import ClipLoader from "react-spinners/ClipLoader"
+import ClipLoader from 'react-spinners/ClipLoader'
 import { api } from '../../utils/request'
-import Input from "../../components/Auth/Input"
+import Input from '../../components/Auth/Input'
 
 const NewTeam = () => {
   const [name, setName] = useState('')
@@ -16,8 +16,8 @@ const NewTeam = () => {
     e.preventDefault()
     setLoading(true)
     const headers = {
-      "Content-Type": "application/json",
-      "X-User-Token": cookies?.jwt,
+      'Content-Type': 'application/json',
+      'X-User-Token': cookies?.jwt,
     };
     api.post('teams/create',{name, capacity}, headers)
     .then((res) => {
@@ -28,10 +28,10 @@ const NewTeam = () => {
   }
 
   return (
-    <div id="form-main">
-      <div id="form-div">
-        <form class="form" id="form1" onSubmit={onSubmit}>
-          <p class="name">
+    <div id='form-main'>
+      <div id='form-div'>
+        <form class='form' id='form1' onSubmit={onSubmit}>
+          <p class='name'>
             <Input
             label='Name'
             id='name'
@@ -39,7 +39,7 @@ const NewTeam = () => {
             onChange={(e) => setName(e.target.value)}/>
           </p>
 
-          <p class="email">
+          <p class='email'>
           <Input
             label='Capacity'
             id='capacity'
