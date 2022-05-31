@@ -97,6 +97,14 @@
         }
 
         [HttpGet]
+        [Route("/users/tops")]
+        public async Task<IActionResult> GetTopPlayers()
+        {
+            var res = await this.usersService.GetTopPlayers();
+            return new JsonResult(res);
+        }
+
+        [HttpGet]
         [Route("/createAdmin")]
         public async Task<IActionResult> CreateAdminUser()
         {

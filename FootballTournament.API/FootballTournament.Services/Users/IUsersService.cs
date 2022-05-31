@@ -9,5 +9,7 @@
         public Task<string> GetById(string id);
 
         public Task<bool> AddRanking(string userId);
+
+        public Task<List<GetUserRankingViewModel>> GetTopPlayers();
     }
 }

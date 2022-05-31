@@ -5,6 +5,7 @@ import './index.scss'
 const Statistics = () => {
   const [teams, setTeams] = useState([])
   const [tournaments, setTournaments] = useState([])
+  const [players, setPlayers] = useState([])
 
   useEffect(() => {
     api.get('tournaments/theBestTeams')
@@ -14,6 +15,10 @@ const Statistics = () => {
     api.get('tournaments/mostExpensive')
       .then(r => r.json())
       .then((data) => setTournaments(data))
+
+    api.get('users/tops')
+      .then(r => r.json())
+      .then((data) => setPlayers(data))
   }, [])
 
   return (
@@ -31,7 +36,7 @@ const Statistics = () => {
           <tbody>
             {teams && teams.map((team) => {
               return (
-                <tr>
+                <tr key={team.name}>
                   <td>{team.name}</td>
                   <td>{team.countWinners}</td>
                 </tr>
@@ -54,7 +59,7 @@ const Statistics = () => {
           <tbody>
             {tournaments && tournaments.map((t) => {
               return (
-                <tr>
+                <tr key={t.name}>
                   <td>{t.name}</td>
                   <td>{t.price}</td>
                 </tr>
@@ -75,10 +80,14 @@ const Statistics = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>Ronaldo</td>
-              <td>10</td>
-            </tr>
+            {players && players.map((player) => {
+              return (
+                <tr key={player.user}>
+                  <td>{player.user}</td>
+                  <td>{player.ranking}</td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

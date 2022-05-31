@@ -49,5 +49,19 @@
             await this.db.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<GetUserRankingViewModel>> GetTopPlayers()
+        {
+            var topPlayers = await this.db.Users
+                .Where(x => x.Ranking > 0)
+                .OrderByDescending(x => x.Ranking)
+                .Select(x => new GetUserRankingViewModel()
+                {
+                    User = x.UserName,
+                    Ranking = x.Ranking
+                }).ToListAsync();
+
+            return topPlayers;
+        }
     }
 }
