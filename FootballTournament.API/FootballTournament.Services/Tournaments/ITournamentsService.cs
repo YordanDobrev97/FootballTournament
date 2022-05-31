@@ -20,5 +20,7 @@ namespace FootballTournament.Services.Tournaments
         public Task<List<GetCountriesViewModel>> GetCountries();
 
         public List<GetTheBestTeam> GetTheBestTeams();
+
+        public Task<List<GetMostExpensiveTournament>> GetMostExpensiveTournaments();
     }
 }

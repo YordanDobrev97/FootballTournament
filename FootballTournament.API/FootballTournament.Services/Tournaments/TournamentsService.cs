@@ -172,6 +172,18 @@
             return true;
         }
 
+        public async Task<List<GetMostExpensiveTournament>> GetMostExpensiveTournaments()
+        {
+            var tournaments = await this.db.Tournaments
+                .OrderByDescending(x => x.Price)
+                .Select(x => new GetMostExpensiveTournament()
+                {
+                    Name = x.Name,
+                    Price = x.Price,
+                }).ToListAsync();
+            return tournaments;
+        }
+
         private object ParseCategory(string inputCategory)
         {
             var isParsed = Enum.TryParse(inputCategory, out Category categoryEntity);

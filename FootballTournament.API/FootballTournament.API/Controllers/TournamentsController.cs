@@ -78,5 +78,13 @@
 
             return new JsonResult(res);
         }
+
+        [HttpGet]
+        [Route("/tournaments/mostExpensive")]
+        public async Task<IActionResult> GetMostExpensive()
+        {
+            var res = await this.tournamentsService.GetMostExpensiveTournaments();
+            return new JsonResult(res);
+        }
     }
 }
