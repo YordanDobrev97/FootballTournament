@@ -12,5 +12,7 @@
         public Task<GetTeamById> GetById(int id);
 
         public Task<bool> Delete(int id);
+
+        public Task<bool> AddPlayer(int teamId, string player);
     }
 }

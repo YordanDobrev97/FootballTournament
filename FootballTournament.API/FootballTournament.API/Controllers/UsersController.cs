@@ -81,6 +81,14 @@
         }
 
         [HttpGet]
+        [Route("/users/{userId}")]
+        public async Task<IActionResult> GetById(string userId)
+        {
+            var res = await this.usersService.GetById(userId);
+            return new JsonResult(res);
+        }
+
+        [HttpGet]
         [Route("/createAdmin")]
         public async Task<IActionResult> CreateAdminUser()
         {

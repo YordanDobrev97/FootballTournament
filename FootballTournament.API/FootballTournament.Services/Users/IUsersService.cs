@@ -4,6 +4,8 @@
 
     public interface IUsersService
     {
-        public Task<List<UserViewModel>> All(); 
+        public Task<List<UserViewModel>> All();
+
+        public Task<string> GetById(string id);
     }
 }

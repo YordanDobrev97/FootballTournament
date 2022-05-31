@@ -67,6 +67,14 @@
             return res;
         }
 
+        [HttpPost]
+        [Route("/teams/addPlayer")]
+        public async Task<bool> AddPlayer([FromBody] AddPlayerViewModel input)
+        {
+            var res = await this.teamsService.AddPlayer(input.TeamId, input.PlayerId);
+            return res;
+        }
+
         private string GetUserId(Microsoft.Extensions.Primitives.StringValues cookie)
         {
             var handler = new JwtSecurityTokenHandler();

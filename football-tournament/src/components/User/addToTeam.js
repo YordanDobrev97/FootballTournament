@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useCookies } from "react-cookie"
+import { useParams, useNavigate } from 'react-router-dom'
 import Input from '../Auth/Input'
 import { api } from '../../utils/request'
 import './index.scss'
 
 const AddToTeam = () => {
   const [player, setPlayer] = useState('')
+  const [team, setTeam] = useState('')
   const [teams, setTeams] = useState([]) 
   const [cookies] = useCookies(["jwt"])
+
+  const params = useParams()
+  const navigation = useNavigate()
 
   useEffect(() => {
     api
@@ -19,7 +24,23 @@ const AddToTeam = () => {
       .then((data) => {
         setTeams(data)
       });
+
+    api.get(`users/${params.userId}`)
+      .then(res => res.json())
+      .then(d => setPlayer(d))
   }, [])
+
+  const addToTeam = () => {
+    api.post('teams/addPlayer',
+      {
+        teamId: team,
+        playerId: params.userId
+      }).then((res) => {
+        if (res.ok) {
+          navigation('/administration/teams/all')
+        }
+      })
+  }
 
   return (
     <div>
@@ -33,7 +54,7 @@ const AddToTeam = () => {
       </div>
 
       <div className='row'>
-        <select className='team-wrapper'>
+        <select onChange={(e) => setTeam(e.target.value)} className='team-wrapper'>
           {teams.map((team) => {
             return (
               <option value={team.id}>{team.name}</option>
@@ -43,7 +64,7 @@ const AddToTeam = () => {
       </div>
 
       <div>
-        <button>Add</button>
+        <button onClick={addToTeam}>Add</button>
       </div>
     </div>
   )

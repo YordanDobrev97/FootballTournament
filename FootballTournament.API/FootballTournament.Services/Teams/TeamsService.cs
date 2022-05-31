@@ -122,5 +122,21 @@
 
             return true;
         }
+
+        public async Task<bool> AddPlayer(int teamId, string player)
+        {
+            var team = await this.db.Teams.FirstOrDefaultAsync(x => x.Id == teamId);
+
+            if (team == null) return false;
+
+            var user = await this.db.Users.FirstOrDefaultAsync(x => x.Id == player);
+
+            if (user == null) return false;
+
+            team.Players.Add(user);
+            this.db.Teams.Update(team);
+            await this.db.SaveChangesAsync();
+            return true;
+        }
     }
 }

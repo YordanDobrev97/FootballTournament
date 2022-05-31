@@ -23,5 +23,15 @@
                 Username = x.UserName,
             }).ToListAsync();
         }
+
+        public async Task<string> GetById(string id)
+        {
+            var user = await this.db.Users
+                .Where(x => x.Id == id)
+                .Select(x => x.UserName)
+                .FirstOrDefaultAsync();
+
+            return user;
+        }
     }
 }
