@@ -39,6 +39,17 @@ const Users = () => {
     return tempUsers.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, tempUsers]);
 
+  const addRanking = (id) => {
+    api.post('users/addRanking', {
+      id: id
+    }).then(r => r.json())
+      .then((res) => {
+        if (res) {
+          window.location.reload(true)
+        }
+      })
+  }
+
   return (
     <div>
       <header>
@@ -59,9 +70,15 @@ const Users = () => {
                     <td>
                       <Link to={`/administration/users/${user.id}`}>
                         <button className='action-btn'>
-                          <FontAwesomeIcon color="#ffff" icon={faPlus} />
+                          <FontAwesomeIcon color="#ffff" icon={faLink} />
                         </button>
                       </Link>
+
+                      <input className='ranking-value'
+                      type='number' value={user.ranking} />
+                      <button className='action-btn' onClick={(e) => addRanking(user.id)}>
+                        <FontAwesomeIcon color="#ffff" icon={faPlus} />
+                      </button>
                     </td>
                   </tr>
                 );

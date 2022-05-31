@@ -21,6 +21,7 @@
             {
                 Id = x.Id,
                 Username = x.UserName,
+                Ranking = x.Ranking
             }).ToListAsync();
         }
 
