@@ -16,6 +16,8 @@ import CreateTournament from './pages/Tournament/create'
 import Team from './pages/Team/index'
 import LayoutTeam from './pages/Team/layoutTeam'
 import NewTeam from './pages/Team/newTeam'
+import StatisticsLayout from './pages/Statistics/statisticsLayout'
+import Statistics from './pages/Statistics'
 
 import AdminLayout from './components/Layout/adminLayout'
 import Administration from './pages/Administration'
@@ -54,7 +56,11 @@ function App() {
                 <Route path='all' element={<Team />}/>
                 <Route path='new' element={<NewTeam />}/>
               </Route>
+              <Route path='statistics' element={<StatisticsLayout />}>
+                <Route path='index' element={<Statistics />}/>
+              </Route>
             </Route>
+            
             <Route path='administration' element={<AdminLayout />}>
               <Route path='home' element={<Administration />}/>
 

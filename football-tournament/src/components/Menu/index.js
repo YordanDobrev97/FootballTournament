@@ -34,7 +34,7 @@ const Menu = () => {
           </li>
 
           <li className='nav-item'>
-            <Link to='/'>Statistics</Link>
+            <Link to='/statistics/index'>Statistics</Link>
           </li>
           {user.IsInRole == 'True' &&  <li className='nav-item'>
             <Link to='/administration/home'>Administration</Link>
