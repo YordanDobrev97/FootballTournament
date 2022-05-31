@@ -10,8 +10,7 @@
     using System.Security.Claims;
     using System.Text;
 
-    [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
         private readonly IConfiguration configuration;
         private readonly UserManager<ApplicationUser> userManager;
@@ -104,25 +103,6 @@
             return new JsonResult(res);
         }
 
-        [HttpGet]
-        [Route("/createAdmin")]
-        public async Task<IActionResult> CreateAdminUser()
-        {
-            var newUser = new ApplicationUser()
-            {
-                UserName = "admin",
-            };
-
-            var newRole = new ApplicationRole("Admin");
-
-            var result = await this.userManager.CreateAsync(newUser, "admin-pass");
-            var resRole = await this.roleManager.CreateAsync(newRole);
-
-            await this.userManager.AddToRoleAsync(newUser, "Admin");
-
-            return new JsonResult("Created");
-        }
-        
         private object GenerateJwtToken(string id, string username, bool isInRole)
         {
             var claims = new List<Claim>

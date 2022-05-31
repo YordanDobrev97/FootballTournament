@@ -4,8 +4,7 @@
     using FootballTournament.ViewModels.Tournaments;
     using Microsoft.AspNetCore.Mvc;
 
-    [ApiController]
-    public class TournamentsController : ControllerBase
+    public class TournamentsController : BaseController
     {
         private readonly ITournamentsService tournamentsService;
         

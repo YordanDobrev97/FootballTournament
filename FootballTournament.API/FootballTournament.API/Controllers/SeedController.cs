@@ -1,17 +1,28 @@
-﻿using FootballTournament.Data.Models;
-
-namespace FootballTournament.Data.Seeding
+﻿namespace FootballTournament.API.Controllers
 {
-    public class CountrySeeder
+    using FootballTournament.Data;
+    using FootballTournament.Data.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Identity;
+    public class SeedController : BaseController
     {
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly FootballTournamentContext db;
 
-        public CountrySeeder(FootballTournamentContext db)
+        public SeedController(
+            FootballTournamentContext db,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager)
         {
             this.db = db;
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
-        public async Task Seed()
+        [HttpGet]
+        [Route("/seedCountries")]
+        public async Task<IActionResult> SeedCountries()
         {
             var countries = new List<Country>()
             {
@@ -43,6 +54,27 @@ namespace FootballTournament.Data.Seeding
             };
 
             await this.db.Countries.AddRangeAsync(countries);
+            await this.db.SaveChangesAsync();
+            return new JsonResult("Successfully seed");
+        }
+
+        [HttpGet]
+        [Route("/createAdmin")]
+        public async Task<IActionResult> CreateAdminUser()
+        {
+            var newUser = new ApplicationUser()
+            {
+                UserName = "admin",
+            };
+
+            var newRole = new ApplicationRole("Admin");
+
+            var result = await this.userManager.CreateAsync(newUser, "admin-pass");
+            var resRole = await this.roleManager.CreateAsync(newRole);
+
+            await this.userManager.AddToRoleAsync(newUser, "Admin");
+
+            return new JsonResult("Created");
         }
     }
 }

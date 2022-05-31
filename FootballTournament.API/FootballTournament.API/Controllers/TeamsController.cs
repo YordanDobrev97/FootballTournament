@@ -3,11 +3,8 @@
     using FootballTournament.Services.Teams;
     using FootballTournament.ViewModels.Teams;
     using Microsoft.AspNetCore.Mvc;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-
-    [ApiController]
-    public class TeamsController : ControllerBase
+    
+    public class TeamsController : BaseController
     {
         private readonly ITeamsService teamsService;
 
@@ -20,9 +17,7 @@
         [Route("/teams/all")]
         public async Task<IActionResult> All()
         {
-            var token = this.HttpContext.Request.Headers["X-User-Token"].ToString();
-            var userId = GetUserId(token);
-
+            var userId = this.GetUserId();
             var teams = await this.teamsService.All(userId);
             return new JsonResult(teams);
         }
@@ -31,8 +26,7 @@
         [Route("/teams/create")]
         public async Task<bool> Create([FromBody] CreateTeamInputModel input)
         {
-            var token = this.HttpContext.Request.Headers["X-User-Token"].ToString();
-            var userId = GetUserId(token);
+            var userId = this.GetUserId();
             
             if (userId == null)
             {
@@ -73,17 +67,6 @@
         {
             var res = await this.teamsService.AddPlayer(input.TeamId, input.PlayerId);
             return res;
-        }
-
-        private string GetUserId(Microsoft.Extensions.Primitives.StringValues cookie)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var jsonToken = handler.ReadToken(cookie);
-            var tokenS = handler.ReadToken(cookie) as JwtSecurityToken;
-            var id = tokenS.Claims.Where(x => x.Type == ClaimTypes.NameIdentifier)
-                .FirstOrDefault()?.Value;
-
-            return id;
         }
     }
 }
